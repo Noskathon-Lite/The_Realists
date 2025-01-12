@@ -82,7 +82,7 @@
     .flex {
       display: flex;
       width: 100%;
-      gap: 6px;
+      gap: 1px;
     }
 
     .form label {
@@ -183,21 +183,12 @@
 
 
 
+<!-- Register Form  -->
 
-  <form class="form">
+  <form class="form" method="POST">
+    {% csrf_token %}
     <p class="title">Register </p>
     <p class="message">Signup now and get full access to our app. </p>
-    <div class="flex">
-      <label>
-        <input required="" placeholder="" type="text" class="input" name="Firstname">
-        <span>Firstname</span>
-      </label>
-
-      <label>
-        <input required="" placeholder="" type="text" class="input" name="lastname">
-        <span>Lastname</span>
-      </label>
-    </div>
 
     <label>
       <input required="" placeholder="" type="email" class="input" name="email">
@@ -208,10 +199,10 @@
       <input required="" placeholder="" type="password" class="input" name="password1">
       <span>Password</span>
     </label>
-    <label>
+    {% comment %} <label>
       <input required="" placeholder="" type="password" class="input" name="password2">
       <span>Confirm password</span>
-    </label>
+    </label> {% endcomment %}
     <button class="submit">Submit</button>
     <p class="signin">Already have an acount ? <a href="#">Signin</a> </p>
   </form>

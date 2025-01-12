@@ -1,24 +1,28 @@
 from django.shortcuts import render,redirect
+from django.http import HttpResponse
 from django.contrib.auth import authenticate,login,logout
 from django.contrib import messages
 from django.contrib.auth.models import User
+from django.contrib import messages
+
+
 
 # Create your views here.
 
-def register_user(request):
-    return render(request,'register.html')
+def Test(request):
+    return HttpResponse("hello")
      
 
 
 # register user
 def register_user(request):
     if request.method == "POST":
-        username = request.POST['username']
-        email = request.POST['email']
-        password = request.POST['password']
-        confirm_password = request.POST['confirm_password']
+        # username = request.POST.get("username")
+        email = request.POST.get("email")
+        password = request.POST.get("password")
+        # confirm_password = request.POST['confirm_password']
         
-        if password == confirm_password:
+        if password:
             if User.objects.filter(username=username).exists():
                 messages.error(request,"username already exists")
             elif User.object.filter(email=email).exists():
@@ -29,8 +33,8 @@ def register_user(request):
                 messages.success(request,"User registered successfully! ")
                 return redirect('login')
         else:
-            message.error(request,"Passwords do not match")
-        return render(request,'register.html')
+            messages.error(request,"Passwords do not match")
+    return render(request,'register.html')
 
 #login user 
 def login_user(request):
