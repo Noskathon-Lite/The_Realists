@@ -2,6 +2,11 @@ from django.shortcuts import render,redirect
 from django.contrib.auth import authenticate,login,logout
 # Create your views here.
 
+def register_user(request):
+    return render(request,'register.html')
+     
+
+
 # register user
 def register_user(request):
     if request.method == "POST":
