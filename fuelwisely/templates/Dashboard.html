@@ -1,18 +1,205 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <!-- Link to external CSS file -->
-    <link rel="stylesheet" href="styles.css">
-    <!-- Favicon -->
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
-</head>
-<body>
-    <!-- Main content -->
-    
-    
-</body>
-</html>
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<style>
+    :root {
+        --primary-green: #1a5d1a;     /* Darker green */
+        --secondary-green: #116530;    /* Medium dark green */
+        --light-green: #e7f9e7;        /* Very light green */
+        --text-dark: #1c2833;          /* Nearly black */
+        --text-light: #ffffff;         /* White text */
+    }
+
+    .profile-container {
+        max-width: 800px;
+        margin: 2rem auto;
+        padding: 2rem;
+        background: white;
+        border-radius: 15px;
+        box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+    }
+
+    .profile-header {
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+        padding-bottom: 2rem;
+        border-bottom: 2px solid var(--light-green);
+    }
+
+    .profile-avatar {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        background: var(--primary-green);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2rem;
+        color: var(--text-light);
+        box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+
+    .profile-info h1 {
+        color: var(--primary-green);
+        margin-bottom: 0.5rem;
+    }
+
+    .profile-info p {
+        color: var(--text-dark);
+        margin: 0.3rem 0;
+    }
+
+    .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1.5rem;
+        margin: 2rem 0;
+    }
+
+    .stat-card {
+        background: linear-gradient(145deg, var(--primary-green), var(--secondary-green));
+        padding: 1.5rem;
+        border-radius: 10px;
+        text-align: center;
+        color: var(--text-light);
+        box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .stat-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 12px 20px rgba(0,0,0,0.25);
+    }
+
+    .stat-card h3 {
+        color: var(--text-light);
+        margin-bottom: 0.8rem;
+        font-size: 1.1rem;
+    }
+
+    .stat-card p {
+        font-size: 1.4rem;
+        font-weight: bold;
+    }
+
+    .travel-history {
+        margin-top: 2rem;
+        background: var(--light-green);
+        padding: 2rem;
+        border-radius: 10px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+
+    .travel-history h2 {
+        color: var(--primary-green);
+        margin-bottom: 1.5rem;
+    }
+
+    .travel-record {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        padding: 1rem;
+        border-bottom: 1px solid var(--secondary-green);
+        transition: all 0.3s ease;
+        background: white;
+        margin-bottom: 0.5rem;
+        border-radius: 5px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .travel-record:hover {
+        background-color: var(--light-green);
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        transform: translateX(5px);
+    }
+
+    .btn-green {
+        background: var(--primary-green);
+        color: var(--text-light);
+        padding: 0.8rem 1.5rem;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        font-weight: bold;
+        text-decoration: none;
+        display: inline-block;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+
+    .btn-green:hover {
+        background: var(--secondary-green);
+        transform: translateY(-2px);
+        box-shadow: 0 6px 15px rgba(0,0,0,0.25);
+    }
+</style>
+
+<div class="profile-container">
+    <!-- Profile Header -->
+    <div class="profile-header">
+        <div class="profile-avatar">
+            {{ user.username|make_list|first|upper }}
+        </div>
+        <div class="profile-info">
+            <h1>{{ user.username }}</h1>
+            <p>{{ user.profile.location }}</p>
+            <p>Email: {{ user.email }}</p>
+        </div>
+    </div>
+
+    <!-- Stats Overview -->
+    <div class="stats-grid">
+        <div class="stat-card">
+            <h3>Total CO₂ Saved</h3>
+            <p>{{ user.profile.total_co2_saved|floatformat:2 }} kg</p>
+        </div>
+        <div class="stat-card">
+            <h3>Total Trips</h3>
+            <p>{{ user.profile.travel_records.count }}</p>
+        </div>
+        <div class="stat-card">
+            <h3>Distance Travelled</h3>
+            <p>{{ user.profile.total_distance|default:"0"|floatformat:1 }} km</p>
+        </div>
+        <div class="stat-card">
+            <h3>Average World CO₂ Emissions</h3>
+            <p>12.6kg/day</p>
+        </div>
+        <div class="stat-card">
+            <h3>Average Nepal CO₂ Emissions</h3>
+            <p>1.3kg/day</p>
+        </div>
+        <div class="stat-card">
+            <h3>Green Score</h3>
+            <p>{{ green_score|default:"85" }}/100</p>
+        </div>
+    </div>
+
+    <!-- Travel History -->
+    <div class="travel-history">
+        <h2>Travel History</h2>
+        <!-- <div class="travel-record" style="font-weight: bold;">
+            <div>Date</div>
+            <div>Transport Type</div>
+            <div>Distance (km)</div>
+            <div>CO₂ Emitted (kg)</div>
+        </div>
+        {% for record in user.profile.travel_records.all|dictsortreversed:"date" %}
+        <div class="travel-record">
+            <div>{{ record.date|date:"M d, Y" }}</div>
+            <div>{{ record.transport_type|title }}</div>
+            <div>{{ record.distance|floatformat:1 }}</div>
+            <div>{{ record.co2_emitted|floatformat:2 }}</div>
+        </div>
+        {% empty %}
+        <div class="travel-record">
+            <div colspan="4" style="text-align: center;">No travel records yet</div> -->
+        </div>
+        {% endfor %}
+    </div>
+
+
+</div>
+{% endblock %}
