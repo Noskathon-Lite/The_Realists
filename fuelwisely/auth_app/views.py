@@ -51,17 +51,20 @@ def login_user(request):
             messages.error(request, "Invalid credentials")
     return render(request,'login.html')
 
-
-#Dashboard for a user:
-def dashboard(request):
-    return render(request,'dashboard.html')
-
-
-
-
-
 #logout a user:
 def logout_user(request):
     logout(request)
     messages.success(request,"Logged out successfully")
     return redirect('login')
+
+        
+
+
+                
+
+                
+        
+    
+    
+    
+    

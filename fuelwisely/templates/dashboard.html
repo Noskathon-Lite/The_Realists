@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Dashboard</title>
+    <!-- Link to external CSS file -->
+    <style>
+      body {
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        min-height: 100vh; 
+        margin: 0;
+        background-color: #f3f4f6; 
+    }
+    
+    .form-container {
+        width: 350px;
+        border-radius: 0.75rem;
+        background-color: #ffffff;
+        padding: 2rem;
+        color: rgb(0, 0, 0);
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    
+
+      .title {
+        text-align: center;
+        font-size: 1.5rem;
+        line-height: 2rem;
+        font-weight: 700;
+      }
+
+      .form {
+        margin-top: 1.5rem;
+      }
+
+      .input-group {
+        margin-top: 0.25rem;
+        font-size: 0.875rem;
+        line-height: 1.25rem;
+        color: rgb(0, 0, 0);
+      }
+
+      .input-group label {
+        display: block;
+        color: #58bc82;
+        margin-bottom: 4px;
+      }
+
+      .input-group input {
+        width: 90%;
+        border-radius: 0.375rem;
+        border: 1px solid rgb(0, 0, 0);
+        outline: 0;
+        background-color:  #ffffff;
+        padding: 0.75rem 1rem;
+        color: black; /* Ensure the text is black */
+      }
+
+      .input-group input:focus {
+        border: 2px solid #58bc82;
+      }
+
+      .forgot {
+        display: flex;
+        justify-content: flex-end;
+        font-size: 0.75rem;
+        line-height: 1rem;
+        color: rgb(0, 0, 0);
+        margin: 8px 0 14px 0;
+      }
+
+      .forgot a,
+      .signup a {
+        color: rgba(243, 244, 246, 1);
+        text-decoration: none;
+        font-size: 14px;
+      }
+
+      .forgot a:hover,
+      .signup a:hover {
+        text-decoration: underline rgba(167, 139, 250, 1);
+      }
+
+      .calculate {
+        display: block;
+        width: 100%;
+        background-color: #58bc82;
+        padding: 0.75rem;
+        text-align: center;
+        color: rgba(17, 24, 39, 1);
+        border: none;
+        border-radius: 0.375rem;
+        font-weight: 600;
+      }
+
+      .social-message {
+        display: flex;
+        align-items: center;
+        padding-top: 1rem;
+      }
+
+      .line {
+        height: 1px;
+        flex: 1 1 0%;
+        background-color: rgba(55, 65, 81, 1);
+      }
+
+      .social-message .message {
+        padding-left: 0.75rem;
+        padding-right: 0.75rem;
+        font-size: 0.875rem;
+        line-height: 1.25rem;
+        color: rgb(109, 114, 123);
+      }
+
+      .social-icons {
+        display: flex;
+        justify-content: center;
+      }
+
+      .social-icons .icon {
+        border-radius: 0.125rem;
+        padding: 0.75rem;
+        border: none;
+        background-color: transparent;
+        margin-left: 8px;
+      }
+
+      .social-icons .icon svg {
+        height: 1.25rem;
+        width: 1.25rem;
+        fill: #fff;
+      }
+
+      .custom-shape-divider-bottom-1736607349 {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        overflow: hidden;
+        line-height: 0;
+      }
+
+      .custom-shape-divider-bottom-1736607349 svg {
+        position: relative;
+        display: block;
+        width: calc(100% + 1.3px);
+        height: 110px;
+        transform: rotateY(180deg);
+      }
+
+      .custom-shape-divider-bottom-1736607349 .shape-fill {
+        fill: #58bc82;
+      }
+    </style>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+  </head>
+  <body>
+    <!-- Main content -->
+
+    <div class="form-container">
+      
+      <form class="form">
+        <div class="input-group">
+          <label for="Mode">Mode:</label>
+          <input placeholder="" id="username" name="Mode" type="text" />
+        </div>
+        <div class="input-group">
+          <label for="Vehicle Type">Vehicle Type :</label>
+          <input placeholder="" id="VehicleType" name="VehicleType" type="text" />
+          <label for="VehicleSize">Vehicle Size</label>
+          <input placeholder="" id="VehicleSize" name="VehicleSize" type="number" />
+          <label for="Distance">Distance </label>
+          <input placeholder="" type="text" />
+        </div>
+        <button style="margin-top: 6%" class="calculate">Calculate</button>
+      </form>
+      <div class="social-message">
+        <div class="line"></div>
+        <p class="message">Entre Details to view Virtual Tour</p>
+        <div class="line"></div>
+      </div>
+    </div>
+
+
+    <div>
+      <img
+        src="/static/img/vehicle.svg"
+        alt="Description of Image"
+        width="500"
+        height="600"
+      />
+    </div>
+
+
+    <!--Footer design  -->
+    <div class="custom-shape-divider-bottom-1736607349">
+      <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+        <path
+          d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z"
+          class="shape-fill">
+        </path>
+      </svg>
+    </div>
+
+
+    
+  </body>
+</html>
