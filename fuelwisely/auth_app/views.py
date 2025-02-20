@@ -6,21 +6,19 @@ from django.contrib.auth.models import User
 from django.contrib import messages
 
 
-
+   
 # Create your views here.
 
 def Test(request):
     return HttpResponse("hello")
      
 
-
-# register user
+ 
+# register user 
 def register_user(request):
     if request.method == "POST":
-        # username = request.POST.get("username")
         email = request.POST.get("email")
         password = request.POST.get("password")
-        # confirm_password = request.POST['confirm_password']
         
         if password:
             if User.objects.filter(username=username).exists():
@@ -59,8 +57,9 @@ def logout_user(request):
 
         
 
-
-                
+#dashboard  
+def dashboard(request):
+    return render(request,'dashboard.html') 
 
                 
         

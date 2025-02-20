@@ -41,9 +41,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'auth_app',
-    'core',
-    'jazzmin',
+    # 'auth_app',
+    # 'core',
+    # 'jazzmin',
     
 ]
 
